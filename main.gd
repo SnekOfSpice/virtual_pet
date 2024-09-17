@@ -20,7 +20,7 @@ func _ready():
 	_MainWindow.min_size = player_size
 	_MainWindow.size = _MainWindow.min_size
 	#Places the character in the middle of the screen and on top of the taskbar
-	_MainWindow.position = Vector2i(DisplayServer.screen_get_size().x/2 - (player_size.x/2), get_pos_in_taskbar() + player_size.y * 0.5)
+	_MainWindow.position = Vector2i(DisplayServer.screen_get_size().x/2 - (player_size.x/2), get_pos_in_taskbar())
 
 func get_current_usable_screen_rect() -> Rect2:
 	#print(_MainWindow.position)
