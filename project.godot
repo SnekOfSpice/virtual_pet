@@ -19,7 +19,8 @@ boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://assets/icon.png"
+config/icon="res://assets/icon2.png"
+config/windows_native_icon="res://assets/icon2.ico"
 
 [display]
 
@@ -44,4 +45,7 @@ pet={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 viewport/transparent_background=true

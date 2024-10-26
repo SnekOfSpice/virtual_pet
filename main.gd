@@ -5,7 +5,7 @@ extends Node2D
 @onready var character: Node2D = $Character
 @onready var emitter: CPUParticles2D = $Character/CPUParticles2D
 
-var player_size: Vector2i = Vector2i(130,134)
+var player_size: Vector2i = Vector2i(110,70)
 #The offset between the mouse and the character
 var mouse_offset: Vector2 = Vector2.ZERO
 var selected: bool = false
@@ -13,7 +13,7 @@ var selected: bool = false
 var is_walking: bool = false
 var walk_direction: int = 1
 #Character walk speed
-const WALK_SPEED = 150
+const WALK_SPEED = 120
 
 func _ready():
 	#Change the size of the window
@@ -36,6 +36,10 @@ func get_current_usable_screen_rect() -> Rect2:
 				current_screen = i
 				screen_rect = Rect2(pos, size)
 				break
+	
+	if not screen_rect:
+		return DisplayServer.screen_get_usable_rect(0)
+	
 	return screen_rect
 
 func _process(delta):
@@ -104,7 +108,7 @@ func walk(delta):
 			,clamp_on_screen_width(_MainWindow.position.x, player_size.x))
 	_MainWindow.position.y = get_pos_in_taskbar()
 	#Changes direction if it hits the sides of the screen
-	if ((_MainWindow.position.x == (multi_screen_extents().x - player_size.x)) or (_MainWindow.position.x == 0)):
+	if ((_MainWindow.position.x >= (multi_screen_extents().x - player_size.x)) or (_MainWindow.position.x <= 0)):
 		walk_direction = walk_direction * -1
 		character.reverse_flip()
 
