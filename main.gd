@@ -13,7 +13,7 @@ var selected: bool = false
 var is_walking: bool = false
 var walk_direction: int = 1
 #Character walk speed
-const WALK_SPEED = 120
+const WALK_SPEED = 80
 
 func _ready():
 	#Change the size of the window
@@ -37,8 +37,8 @@ func get_current_usable_screen_rect() -> Rect2:
 				screen_rect = Rect2(pos, size)
 				break
 	
-	if not screen_rect:
-		return DisplayServer.screen_get_usable_rect(0)
+	#if not screen_rect:
+		#return DisplayServer.screen_get_usable_rect(0)
 	
 	return screen_rect
 
